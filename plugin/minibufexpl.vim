@@ -1742,11 +1742,11 @@ function! <SID>MBESelectBuffer(split)
 
     " If we are in the buffer explorer or in a nonmodifiable buffer with
     " g:miniBufExplModSelTarget set then try another window (a few times)
-    if bufname('%') == '-MiniBufExplorer-' || (g:miniBufExplModSelTarget == 1 && getbufvar(bufnr('%'), '&modifiable') == 0)
+    if bufname('%') == '-MiniBufExplorer-' || bufname('%') =~ 'NERD_tree_' || (g:miniBufExplModSelTarget == 1 && getbufvar(bufnr('%'), '&modifiable') == 0)
       wincmd w
-      if bufname('%') == '-MiniBufExplorer-' || (g:miniBufExplModSelTarget == 1 && getbufvar(bufnr('%'), '&modifiable') == 0)
+      if bufname('%') == '-MiniBufExplorer-' || bufname('%') =~ 'NERD_tree_1' || (g:miniBufExplModSelTarget == 1 && getbufvar(bufnr('%'), '&modifiable') == 0)
         wincmd w
-        if bufname('%') == '-MiniBufExplorer-' || (g:miniBufExplModSelTarget == 1 && getbufvar(bufnr('%'), '&modifiable') == 0)
+        if bufname('%') == '-MiniBufExplorer-' || bufname('%') =~ 'NERD_tree_1' || (g:miniBufExplModSelTarget == 1 && getbufvar(bufnr('%'), '&modifiable') == 0)
           wincmd w
           " The following handles the case where -MiniBufExplorer-
           " is the only window left. We need to resize so we don't
